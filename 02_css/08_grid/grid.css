@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: grid;
+  border: 2px solid red;
+  /* grid-template-columns: auto auto auto; */
+  /* grid-template-columns: 100px 100PX ; */
+  /* grid-auto-rows: 100px; */
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.box {
+  border: 2px solid rgb(0, 0, 255);
+  background-color: rgb(159, 199, 252);
+  padding: 20px;
+}

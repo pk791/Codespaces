@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Input Tag Example</title>
+</head>
+<body>
+
+    <h1>Sample Form with Various Input Types</h1>
+    <form action="/submit-form" method="POST">
+       
+        <!-- Text Input -->
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your username" required maxlength="20">
+        <br><br>
+       
+        <!-- Password Input -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        <br><br>
+       
+        <!-- Email Input -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        <br><br>
+       
+        <!-- Number Input -->
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" min="18" max="100" placeholder="Your age">
+        <br><br>
+       
+        <!-- Date Input -->
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+        <br><br>
+       
+        <!-- Radio Buttons -->
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br><br>
+       
+        <!-- Checkbox -->
+        <label>Hobbies:</label><br>
+        <input type="checkbox" id="coding" name="hobby" value="coding">
+        <label for="coding">Coding</label><br>
+        <input type="checkbox" id="reading" name="hobby" value="reading">
+        <label for="reading">Reading</label><br><br>
+       
+        <!-- File Input -->
+        <label for="profilePic">Upload Profile Picture:</label>
+        <input type="file" id="profilePic" name="profilePic" accept="image/*">
+        <br><br>
+       
+        <!-- Submit Button -->
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
