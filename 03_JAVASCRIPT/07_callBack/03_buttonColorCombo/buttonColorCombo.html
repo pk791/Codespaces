@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Combo Pack</title>
+    <style>
+      #fillColor {
+        margin: 20px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: yellow;
+        color: black;
+      }
+
+      #previousColor {
+        margin: 20px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: rgb(146, 251, 255);
+        color: black;
+      }
+
+      #resetColor {
+        margin: 20px;
+        padding: 10px;
+        cursor: pointer;
+        background-color: rgb(255, 0, 195);
+        color: black;
+      }
+    </style>
+  </head>
+  <body id="bgColor">
+    <button id="fillColor">Fill Color</button>
+    <button id="previousColor">Previous Color</button>
+    <button id="resetColor">Reset Color</button>
+
+    <script>
+      const fillButton = document.getElementById("fillColor");
+      const changeBgColor = document.getElementById("bgColor");
+      let allcolor = [
+        "red",
+        "orange",
+        "yellow",
+        "pink",
+        "orangered",
+        "yellowgreen",
+        "rgb(202, 23, 242)",
+        "rgb(146, 251, 255)",
+        "rgb(255, 0, 195)",
+        "green",
+        "blue",
+        "fuchsia",
+        "goldenrod",
+        "greenyellow",
+        "rgb(35, 163, 161)",
+        " darkseagreen",
+        "darksalmon",
+        "lightseagreen",
+        "lightcoral",
+        "lightsalmon",
+      ];
+
+      let i = 0;
+      fillButton.addEventListener("click", fillColor);
+      function fillColor() {
+        changeBgColor.style.backgroundColor = allcolor[i];
+        i = i + 1;
+        console.log(i);
+      }
+
+      const previousButton = document.getElementById("previousColor");
+      let h = i;
+      previousButton.addEventListener("click", previousColor);
+      function previousColor() {
+        changeBgColor.style.backgroundColor = allcolor[h];
+        h = h - 1;
+
+        console.log(h);
+      }
+
+      /* i = (i + 1) % allcolor.length;
+      for (let i = 0; i < allcolor.length; i++) {
+        const element = allcolor[i];
+      } */
+    </script>
+  </body>
+</html>

@@ -33,6 +33,7 @@ while (j >= 1) {
 3. Write a do while loop that prompts a user to enter their favorite tea type until they enter "stop". 
 Store each tea type in an array named teaCollection.
 */
+
 // let teaCollection = []; 
 // let tea;
 // do {

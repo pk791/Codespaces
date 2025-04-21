@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Random Color</title>
+    <style>
+      #rgbColor {
+        margin: 20px;
+        padding: 10px;
+        color: yellow;
+        background-color: orange;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body id="color">
+    <button id="rgbColor" , onclick="randomColor()">Create Random Color</button>
+
+    <script>
+      function randomColor() {
+        const rgbChange = "#" + Math.floor(Math.random() * 1000000);
+        const color = document.getElementById("color");
+        color.style.backgroundColor = rgbChange;
+        if (rgbChange < 100000) {
+          randomColor();
+        }
+      }
+    </script>
+  </body>
+</html>

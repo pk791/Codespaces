@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Background-Color</title>
+    <style>
+      #red {
+        margin: 20px;
+        padding: 10px;
+        background-color: rgb(146, 228, 255);
+        color: black;
+        cursor: pointer;
+      }
+      
+      .background-color {
+        background-color: red;
+      }
+
+      #reset {
+        margin: 20px;
+        padding: 10px;
+        background-color: rgb(249, 196, 255);
+        color: black;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body id="bg">
+    <button id="red">Red</button>
+    <button id="reset">Reset</button>
+
+    <script>
+      const redButton = document.getElementById("red");
+      const resetButton = document.getElementById("reset");
+      const changebg = document.getElementById("bg");
+      const resetbg = document.getElementById("bg");
+
+      redButton.addEventListener("click", bgColor);
+      resetButton.addEventListener("click", resetBgColor);
+
+      function bgColor() {
+        changebg.className = "background-color";
+      }
+
+      function resetBgColor() {
+        resetbg.classList.remove("background-color");
+      }
+    </script>
+  </body>
+</html>
