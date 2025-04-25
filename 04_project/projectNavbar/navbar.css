@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 20px;
   background-color: white;
-  color: black;
+  color: #fff;
 }
 
 .nav-container {
@@ -58,4 +58,23 @@ body {
   padding: 5px 15px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.navbar .dropdown {
+  display: none;
+  color: #fff;
+  padding: 20px;
+}
+
+.games {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar .games-list:hover .dropdown {
+  display: block;
+  position: absolute;
+  background-color: #3e3e3e;
+  min-width: 200px;
 }
