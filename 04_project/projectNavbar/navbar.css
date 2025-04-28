@@ -66,15 +66,37 @@ body {
   padding: 20px;
 }
 
+.navbar .dropdown-1 {
+  display: none;
+  color: #fff;
+  padding: 20px;
+}
+
 .games {
   color: #fff;
   display: block;
   text-decoration: none;
 }
 
+.shopping {
+  color: #fff;
+  display: block;
+  text-decoration: none;
+}
+
+
 .navbar .games-list:hover .dropdown {
   display: block;
   position: absolute;
   background-color: #3e3e3e;
   min-width: 200px;
+}
+
+.navbar .shop-list:hover .dropdown-1 {
+  display: block;
+  position: absolute;
+
+  min-width: 200px;
+color: aqua;
+  border: 5px solid red;
 }
