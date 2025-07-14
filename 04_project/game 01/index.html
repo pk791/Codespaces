@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini Battle Royale</title>
+  <style>
+    canvas { background: #222; display: block; margin: auto; }
+  </style>
+</head>
+<body>
+<canvas id="gameCanvas" width="600" height="400"></canvas>
+<script>
+  const canvas = document.getElementById("gameCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const player = { x: 300, y: 200, size: 20, color: "blue", health: 100 };
+  const bullets = [];
+  const enemies = [{ x: 100, y: 100, size: 20, color: "red" }];
+  const medkits = [{ x: 400, y: 300, size: 15, color: "green" }];
+
+  const keys = {};
+
+  document.addEventListener("keydown", (e) => { keys[e.key] = true; });
+  document.addEventListener("keyup", (e) => { keys[e.key] = false; });
+
+  function gameLoop() {
+    // Movement
+    if (keys["w"]) player.y -= 3;
+    if (keys["s"]) player.y += 3;
+    if (keys["a"]) player.x -= 3;
+    if (keys["d"]) player.x += 3;
+
+    // Shoot
+    if (keys[" "]) {
+      if (bullets.length < 5) {
+        bullets.push({ x: player.x, y: player.y, size: 5, color: "yellow", vx: 5 });
+      }
+    }
+
+    // Update bullets
+    bullets.forEach((b) => { b.x += b.vx; });
+    
+    // Update enemies (chase player)
+    enemies.forEach((e) => {
+      let dx = player.x - e.x;
+      let dy = player.y - e.y;
+      let dist = Math.hypot(dx, dy);
+      if (dist > 0) {
+        e.x += (dx / dist) * 1.5;
+        e.y += (dy / dist) * 1.5;
+      }
+      // collision with player
+      if (Math.abs(e.x - player.x) < 20 && Math.abs(e.y - player.y) < 20) {
+        player.health -= 0.5;
+      }
+    });
+
+    // Bullet hits enemy
+    bullets.forEach((b, bi) => {
+      enemies.forEach((e, ei) => {
+        if (Math.abs(b.x - e.x) < 20 && Math.abs(b.y - e.y) < 20) {
+          enemies.splice(ei, 1);
+        }
+      });
+    });
+
+    // Medkit pickup
+    medkits.forEach((m, mi) => {
+      if (Math.abs(player.x - m.x) < 20 && Math.abs(player.y - m.y) < 20) {
+        player.health = Math.min(100, player.health + 30);
+        medkits.splice(mi, 1);
+      }
+    });
+
+    // Draw
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // player
+    ctx.fillStyle = player.color;
+    ctx.fillRect(player.x - player.size/2, player.y - player.size/2, player.size, player.size);
+
+    // bullets
+    bullets.forEach((b) => {
+      ctx.fillStyle = b.color;
+      ctx.fillRect(b.x, b.y, b.size, b.size);
+    });
+
+    // enemies
+    enemies.forEach((e) => {
+      ctx.fillStyle = e.color;
+      ctx.fillRect(e.x - e.size/2, e.y - e.size/2, e.size, e.size);
+    });
+
+    // medkits
+    medkits.forEach((m) => {
+      ctx.fillStyle = m.color;
+      ctx.fillRect(m.x - m.size/2, m.y - m.size/2, m.size, m.size);
+    });
+
+    // UI
+    ctx.fillStyle = "white";
+    ctx.fillText("Health: " + Math.round(player.health), 10, 20);
+
+    requestAnimationFrame(gameLoop);
+  }
+
+  gameLoop();
+</script>
+</body>
+</html>
